@@ -1,3 +1,3 @@
-# MyLibrary
+# SeatGeek iOS SDK
 
-A description of this package.
+For the SeatGeek SDK documetation, please refer to our [partner documentation](https://partners.seatgeek.com)
