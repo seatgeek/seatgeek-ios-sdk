@@ -1,0 +1,1907 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7 (swiftlang-5.7.0.127.4 clang-1400.0.29.50)
+// swift-module-flags: -target x86_64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name SeatGeekSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import AdSupport
+import AddressBook
+import AppTrackingTransparency
+import CoreImage.CIFilterBuiltins
+import Combine
+import Contacts
+import CoreGraphics
+import CoreImage
+import CoreLocation
+import EventKit
+import EventKitUI
+import Foundation
+import Intents
+import MapKit
+import MarkdownKit
+import PassKit
+import SafariServices
+@_exported import SeatGeekSDK
+import SnapKit
+import Swift
+import SwiftOTP
+import SwiftUI
+import UIKit
+import UserNotifications
+import Vision
+import WebKit
+import _Concurrency
+import _StringProcessing
+extension UIKit.UIColor {
+  public static var sgUnselectedSeat: UIKit.UIColor {
+    get
+  }
+  public static var sgEventCarouselBackground: UIKit.UIColor {
+    get
+  }
+  public static var sgAffirmButtonBackground: UIKit.UIColor {
+    get
+  }
+  public static var sgPrimeTagText: UIKit.UIColor {
+    get
+  }
+  public static var sgPrimeTagBackground: UIKit.UIColor {
+    get
+  }
+  public static var sgPackageTagText: UIKit.UIColor {
+    get
+  }
+  public static var sgPackageTagBackground: UIKit.UIColor {
+    get
+  }
+  public static var sgPackageListingTagBackground: UIKit.UIColor {
+    get
+  }
+  public static var sgPrimeListingTagBackground: UIKit.UIColor {
+    get
+  }
+  public static var sgTicketsBackground: UIKit.UIColor {
+    get
+  }
+}
+@objc(SGKCheckoutAddressControllerDelegate) public protocol CheckoutAddressControllerDelegate {
+  @objc func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateAddressFromAutoSuggest text: Swift.String?)
+  @objc func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateCityFromAutoSuggest text: Swift.String?)
+  @objc func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateStateFromAutoSuggest text: Swift.String?)
+  @objc func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateZipCodeFromAutoSuggest text: Swift.String?)
+}
+@_hasMissingDesignatedInitializers @objc(SGKCheckoutAddressController) @_Concurrency.MainActor(unsafe) public class CheckoutAddressController : SeatGeekSDK.SGCheckoutEditScreen {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: SeatGeekSDK.CheckoutAddressControllerDelegate?
+  @objc @_Concurrency.MainActor(unsafe) public init(viewModel: SeatGeekSDK.CheckoutAddressViewModel, viewTitle: Swift.String)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tappedBack()
+  @objc deinit
+}
+extension SeatGeekSDK.CheckoutAddressController : UIKit.UITableViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+}
+extension SeatGeekSDK.CheckoutAddressController : UIKit.UITableViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+}
+extension SeatGeekSDK.CheckoutAddressController : SeatGeekSDK.SGSearchBarDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBar(_ searchBar: SeatGeekSDK.SGSearchBar!, textDidChange searchText: Swift.String!)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func searchBarTextDidBeginEditing(_ searchBar: SeatGeekSDK.SGSearchBar!)
+  @_Concurrency.MainActor(unsafe) public func styleSearchBar()
+}
+extension SeatGeekSDK.CheckoutAddressController : UIKit.UITextViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers @objc(SGCountrySelectorViewController) @_Concurrency.MainActor(unsafe) public class CountrySelectorViewController : UIKit.UIViewController, UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor(unsafe) final public let viewModel: SeatGeekSDK.CountrySelectorViewModel
+  @_Concurrency.MainActor(unsafe) final public let selectedValueHandler: (Swift.String) -> Swift.Void
+  @objc @_Concurrency.MainActor(unsafe) required public init(viewModel: SeatGeekSDK.CountrySelectorViewModel, selectedValueHandler: @escaping (Swift.String) -> Swift.Void)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didDeselectItemAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+  @objc deinit
+}
+extension Swift.Dictionary {
+  @inlinable public func sgk_compactMapValuesWithKeys<T>(_ transform: (Key, Value) throws -> T?) rethrows -> [Key : T] {
+        return try reduce(into: [Key: T](), { result, x in
+            if let value = try transform(x.key, x.value) {
+                result[x.key] = value
+            }
+        })
+    }
+  @inlinable public func sgk_removingNilValues() -> [Key : Value] {
+        return compactMapValues { $0 }
+    }
+}
+extension UIKit.UINavigationBar {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func sg_configureWithWhiteBackground()
+}
+public enum ValidationType {
+  case none
+  case successCodes
+  case successAndRedirectCodes
+  case customCodes(Swift.ClosedRange<Swift.Int>)
+}
+@objc(SGPublicSaleMarketCodeViewable) public protocol PublicSaleMarketCodeViewable {
+  @objc var seatTitle: Swift.String? { get }
+  @objc var seatToken: Swift.String? { get }
+}
+@objc(SGPublicSaleMarketCodeView) @_Concurrency.MainActor(unsafe) public class PublicSaleMarketCodeView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) weak public var viewControllerToLaunchPasteboardFrom: UIKit.UIViewController?
+  @objc @_Concurrency.MainActor(unsafe) public init(seatInformation: SeatGeekSDK.PublicSaleMarketCodeViewable)
+  @objc @_Concurrency.MainActor(unsafe) public init(seatTitle: Swift.String?, seatToken: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SGLabel) @_Concurrency.MainActor(unsafe) public class Label : UIKit.UILabel {
+  @objc @_Concurrency.MainActor(unsafe) public static func labelWithTypestyle(_ typestyle: SeatGeekSDK.SGObjcTypestyle) -> SeatGeekSDK.Label
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc(typestyle) @_Concurrency.MainActor(unsafe) public var objcTypestyle: SeatGeekSDK.SGObjcTypestyle? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var typestyle: SeatGeekSDK.Typestyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var text: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var textAlignment: UIKit.NSTextAlignment {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var textColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var lineBreakMode: UIKit.NSLineBreakMode {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@objc(SGTypestyle) final public class SGObjcTypestyle : ObjectiveC.NSObject {
+  @nonobjc final public var typestyle: SeatGeekSDK.Typestyle {
+    get
+  }
+  @objc final public var lineHeight: Foundation.NSNumber? {
+    @objc get
+  }
+  @objc final public var paragraphStyle: UIKit.NSParagraphStyle {
+    @objc get
+  }
+  @objc final public var font: UIKit.UIFont {
+    @objc get
+  }
+  @objc final public var textColor: UIKit.UIColor {
+    @objc get
+  }
+  @objc final public var textAttributes: Foundation.NSDictionary {
+    @objc get
+  }
+  public init(_ style: SeatGeekSDK.Typestyle)
+  @objc deinit
+}
+extension Foundation.NSMutableAttributedString {
+  @nonobjc convenience public init(string: Foundation.NSString, style: SeatGeekSDK.SGObjcTypestyle)
+}
+extension Foundation.NSString {
+  @objc dynamic public func withTypestyle(_ style: SeatGeekSDK.SGObjcTypestyle) -> Foundation.NSAttributedString
+}
+extension SeatGeekSDK.SGObjcTypestyle {
+  @objc final public func withColor() -> ((UIKit.UIColor) -> SeatGeekSDK.SGObjcTypestyle)
+  @objc final public func withColor(_ color: UIKit.UIColor) -> SeatGeekSDK.SGObjcTypestyle
+  @objc final public func withTextAlignment() -> ((UIKit.NSTextAlignment) -> SeatGeekSDK.SGObjcTypestyle)
+  @objc final public func withTextAlignment(_ alignment: UIKit.NSTextAlignment) -> SeatGeekSDK.SGObjcTypestyle
+  @objc final public func withLineBreakMode() -> ((UIKit.NSLineBreakMode) -> SeatGeekSDK.SGObjcTypestyle)
+  @objc final public func withLineBreakMode(_ lineBreakMode: UIKit.NSLineBreakMode) -> SeatGeekSDK.SGObjcTypestyle
+}
+extension SeatGeekSDK.SGObjcTypestyle {
+  @objc public static var heading1: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var heading2: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var heading3: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var heading4: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var subtitle: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var terms: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var text1Default: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var text1Strong: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var text2Default: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var text2Strong: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var text3Default: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var text3Strong: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var text4Default: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var text4Strong: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+  @objc public static var uppercase: SeatGeekSDK.SGObjcTypestyle {
+    @objc get
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class CheckoutFooterView : SeatGeekSDK.ListFooterView {
+  @_Concurrency.MainActor(unsafe) @objc convenience dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc override public init(frame: CoreFoundation.CGRect, scrollView: UIKit.UIScrollView? = nil)
+  @objc @_Concurrency.MainActor(unsafe) public var onPurchaseButtonTap: SeatGeekSDK.VoidClosure?
+  @objc @_Concurrency.MainActor(unsafe) public var purchaseButtonEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var marketLabel: UIKit.UILabel {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var priceLabel: UIKit.UILabel {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(SGAPIValidatorZip) public class APIValidatorZip : SeatGeekSDK.SGAPIValidator {
+  @objc override dynamic public class func validationError(for zipcode: Swift.String!, context: Any!, compact: Swift.Bool) -> Swift.String!
+  @objc override dynamic public init()
+  @objc deinit
+}
+public struct DecodableNetworkResponse<T> where T : Swift.Decodable {
+  public let decodedObject: T
+  public let statusCode: Swift.Int
+}
+extension UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public class var sgk_keyline: UIKit.UIView {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public class var sgk_verticalKeyline: UIKit.UIView {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public class func sgk_separatorView() -> UIKit.UIView
+  @_Concurrency.MainActor(unsafe) public class func sgk_spacerView(height: CoreFoundation.CGFloat, priority: SnapKit.ConstraintPriority = .high) -> UIKit.UIView
+  @_Concurrency.MainActor(unsafe) public class func sgk_spacerView(width: CoreFoundation.CGFloat, priority: SnapKit.ConstraintPriority = .high) -> UIKit.UIView
+}
+@objc @objcMembers final public class SGAcknowledgement : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public var id: Swift.String
+  final public var type: SeatGeekSDK.SGAcknowledgement.AgreementType
+  @objc final public var value: Swift.Bool
+  @objc final public var markdownText: Swift.String
+  @objc final public var category: Swift.String
+  @objc final public var required: Swift.Bool
+  @objc final public var slug: Swift.String
+  public init(id: Swift.String, slug: Swift.String, type: SeatGeekSDK.SGAcknowledgement.AgreementType, value: Swift.Bool, markdownText: Swift.String, category: Swift.String, required: Swift.Bool)
+  @objc public static func acknowledgementFrom(dictionary: [Swift.String : Any]) -> SeatGeekSDK.SGAcknowledgement?
+  @objc final public func payload(usingNewCheckoutAPI: Swift.Bool = false) -> [Swift.String : Any]
+  @objc deinit
+  final public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension SeatGeekSDK.SGAcknowledgement {
+  public enum AgreementType : Swift.String, Swift.Codable {
+    case implicit, explicit
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension SeatGeekSDK.SGAcknowledgement {
+  @objc public static func implicitAcknowlegdements(in acknowledgements: [SeatGeekSDK.SGAcknowledgement]) -> [SeatGeekSDK.SGAcknowledgement]
+  @objc public static func explicitAcknowlegdements(in acknowledgements: [SeatGeekSDK.SGAcknowledgement]) -> [SeatGeekSDK.SGAcknowledgement]
+}
+extension SeatGeekSDK.SGAcknowledgement {
+  @objc public static func firstAcknowledgementThatNeedsToBeAgreed(in acknowledgements: [SeatGeekSDK.SGAcknowledgement]?) -> SeatGeekSDK.SGAcknowledgement?
+}
+@objc(SGKCheckoutViewModel) public class CheckoutViewModel : ObjectiveC.NSObject, SeatGeekSDK.CheckoutViewModelProtocol {
+  @objc public init(checkoutAPIService: SeatGeekSDK.CheckoutAPIService)
+  @objc public func addDiscount(code: Swift.String, eventID: Swift.String?, marketName: Swift.String?, completion: @escaping (SeatGeekSDK.CodeValidationResponse) -> Swift.Void)
+  @objc public func abandonCart(purchase: SeatGeekSDK.SGCheckoutPurchase)
+  @objc public func fetchSummaryThenDo(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock?, fail: SeatGeekSDK.SGAPIFailBlock?)
+  @objc public func submitThenDo(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock?, fail: SeatGeekSDK.SGAPIFailBlock?)
+  @objc public func selectAddon(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc public func addPaymentMethod(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly, isSandbox: Swift.Bool, success: SeatGeekSDK.MGBlockWithContext!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc public func deletePaymentMethod(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc public func updateAcknowledgements(purchase: SeatGeekSDK.SGCheckoutPurchase, success: (() -> Swift.Void)?, fail: (([SeatGeekSDK.SGAPIError]?) -> Swift.Void)?)
+  @objc public func updateContact(purchase: SeatGeekSDK.SGCheckoutPurchase, success: (() -> Swift.Void)?, fail: (([SeatGeekSDK.SGAPIError]?) -> Swift.Void)?)
+  @objc deinit
+}
+public struct NetworkResponse : Swift.Equatable {
+  public let data: Foundation.Data
+  public let statusCode: Swift.Int
+  public init(data: Foundation.Data, statusCode: Swift.Int)
+  public static func == (a: SeatGeekSDK.NetworkResponse, b: SeatGeekSDK.NetworkResponse) -> Swift.Bool
+}
+@_inheritsConvenienceInitializers @objc(SGImageLoader) public class ImageLoader : ObjectiveC.NSObject {
+  @objc public func loadImage(at url: Foundation.URL, completionHandler: @escaping (UIKit.UIImage?, Foundation.NSError?) -> Swift.Void)
+  @objc public func loadImage(at url: Foundation.URL, thumbnailMaximumDimension: CoreFoundation.CGFloat, completionHandler: @escaping (UIKit.UIImage?, Foundation.NSError?) -> Swift.Void)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol NetworkSession {
+  #if compiler(>=5.3) && $AsyncAwait
+  func data(for request: Foundation.URLRequest) async throws -> (Foundation.Data, Foundation.URLResponse)
+  #endif
+  #if compiler(>=5.3) && $Sendable
+  func dataTask(with request: Foundation.URLRequest, completionHandler: @escaping @Sendable (Foundation.Data?, Foundation.URLResponse?, Swift.Error?) -> Swift.Void) -> Foundation.URLSessionDataTask
+  #endif
+}
+extension Foundation.URLSession : SeatGeekSDK.NetworkSession {
+}
+@_inheritsConvenienceInitializers @objc(SGBottomNavigatorChildControllerWrapper) @_Concurrency.MainActor(unsafe) public class BottomNavigatorChildControllerWrapper : SeatGeekSDK.SGNavigatorChildController {
+  @objc @_Concurrency.MainActor(unsafe) public func wrap(_ controller: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func footer() -> UIKit.UIView?
+  @_Concurrency.MainActor(unsafe) public func hideHeaderSeparator()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SGKUpcomingEvent) public class UpcomingEvent : ObjectiveC.NSObject {
+  public var title: Swift.String
+  public var id: Swift.String
+  public var venueName: Swift.String?
+  public var venueCoordinates: CoreLocation.CLLocationCoordinate2D?
+  public var date: Foundation.Date?
+  public var isDateTBD: Swift.Bool
+  public var isTimeTDB: Swift.Bool
+  @objc deinit
+}
+extension Foundation.Bundle {
+  @objc dynamic public var buildNumber: Swift.String {
+    @objc get
+  }
+  @objc dynamic public var buildVersion: Swift.String {
+    @objc get
+  }
+  @objc dynamic public var isTestFlight: Swift.Bool {
+    @objc get
+  }
+}
+@objc public enum ButtonStyle : Swift.Int {
+  case button1
+  case button2
+  case button3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ButtonColorType : Swift.Int {
+  case actionPrimary
+  case green
+  case red
+  case light
+  case custom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(SGKButton) @_Concurrency.MainActor(unsafe) public class Button : UIKit.UIButton {
+  @objc @_Concurrency.MainActor(unsafe) public init(style: SeatGeekSDK.ButtonStyle, colorType: SeatGeekSDK.ButtonColorType)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public func setTitle(_ title: Swift.String?)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SGPayoutSellerTypeViewController) @_Concurrency.MainActor(unsafe) public class PayoutSellerTypeViewController : SeatGeekSDK.SGNavigatorChildController, UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var contentHeight: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) final public let payoutMethod: SeatGeekSDK.SGPayoutMethod
+  @_Concurrency.MainActor(unsafe) final public let listing: SeatGeekSDK.SGPublicListing?
+  @objc @_Concurrency.MainActor(unsafe) required public init(withPayoutMethod payoutMethod: SeatGeekSDK.SGPayoutMethod, listing: SeatGeekSDK.SGPublicListing?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+  @objc deinit
+}
+extension Swift.Result where Success == SeatGeekSDK.NetworkResponse, Failure == SeatGeekSDK.RequestError {
+  @discardableResult
+  public func responseDecodable<T>(of type: T.Type, decoder: Foundation.JSONDecoder = JSONDecoder()) throws -> SeatGeekSDK.DecodableNetworkResponse<T> where T : Swift.Decodable
+}
+public class AuthorizationPlugin : SeatGeekSDK.PluginType {
+  public init(user: @autoclosure @escaping () -> SeatGeekSDK.SGUser? = SGUser.current)
+  public func prepare(_ request: Foundation.URLRequest, endpoint: SeatGeekSDK.EndpointTarget) -> Foundation.URLRequest
+  @objc deinit
+}
+@objc(SGKPayoutBankCountry) public enum PayoutBankCountry : Swift.Int, Swift.CaseIterable {
+  case usa
+  case canada
+  public static var defaultBankCountry: SeatGeekSDK.PayoutBankCountry
+  public init?(rawValue: Swift.Int)
+  public typealias AllCases = [SeatGeekSDK.PayoutBankCountry]
+  public typealias RawValue = Swift.Int
+  public static var allCases: [SeatGeekSDK.PayoutBankCountry] {
+    get
+  }
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+extension SeatGeekSDK.Typestyle {
+  public func withColor(_ color: UIKit.UIColor) -> SeatGeekSDK.Typestyle
+  public func withTextAlignment(_ alignment: UIKit.NSTextAlignment) -> SeatGeekSDK.Typestyle
+  public func withLineBreakMode(_ lineBreakMode: UIKit.NSLineBreakMode) -> SeatGeekSDK.Typestyle
+}
+@_inheritsConvenienceInitializers @objc(SGMyTicketsController) @_Concurrency.MainActor(unsafe) public class MyTicketsController : SeatGeekSDK.SGViewController, SeatGeekSDK.SGNavigationLayoutProtocol, UIKit.UICollectionViewDataSource, UIKit.UICollectionViewDelegate, UIKit.UICollectionViewDelegateFlowLayout {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func updateViewConstraints()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func safeAreaInsetsChanged()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) @objc public func usesTallNavBar() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func hideNavBarOnShow() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func numberOfSections(in collectionView: UIKit.UICollectionView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, referenceSizeForHeaderInSection section: Swift.Int) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, viewForSupplementaryElementOfKind kind: Swift.String, at indexPath: Foundation.IndexPath) -> UIKit.UICollectionReusableView
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, layout collectionViewLayout: UIKit.UICollectionViewLayout, sizeForItemAt indexPath: Foundation.IndexPath) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, willDisplay cell: UIKit.UICollectionViewCell, forItemAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc public func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
+  @_Concurrency.MainActor(unsafe) @objc public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor(unsafe) @objc public func scrollViewWillBeginDragging(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor(unsafe) @objc public func scrollViewDidEndDragging(_ scrollView: UIKit.UIScrollView, willDecelerate decelerate: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc public func scrollViewDidEndDecelerating(_ scrollView: UIKit.UIScrollView)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension SeatGeekSDK.MyTicketsController : MessageUI.MFMailComposeViewControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func mailComposeController(_ controller: MessageUI.MFMailComposeViewController, didFinishWith result: MessageUI.MFMailComposeResult, error: Swift.Error?)
+}
+extension UIKit.UIImageView {
+  @_Concurrency.MainActor(unsafe) convenience public init(wrappedTo image: UIKit.UIImage)
+}
+@objc(SGPaymentMethodProtocol) public protocol PaymentMethodProtocol {
+  @objc var ID: Swift.String { get }
+  @objc var creditCardIcon: UIKit.UIImage? { get }
+  @objc var last4Digits: Swift.String? { get }
+  @objc var maskedLast4Digits: Swift.String? { get }
+  @objc var nameAndExpirationDate: Swift.String? { get }
+  @objc var isSpreedly: Swift.Bool { get }
+  @objc var cardType: Swift.String? { get }
+}
+@objc(SGPaymentCardRowView) @_Concurrency.MainActor(unsafe) public class PaymentCardRowView : SeatGeekSDK.VerticalListRowView {
+  @objc @_Concurrency.MainActor(unsafe) final public let paymentMethod: SeatGeekSDK.PaymentMethodProtocol
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var showsKeyline: Swift.Bool {
+    get
+    set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public init(paymentMethod: SeatGeekSDK.PaymentMethodProtocol)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init(coder: Foundation.NSCoder)
+  @objc(styleSelected:) @_Concurrency.MainActor(unsafe) public func style(selected: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func setCustomDescription(text: Foundation.NSAttributedString)
+  @objc deinit
+}
+extension UIKit.UINavigationItem {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var leftBarButton: SeatGeekSDK.NavBarButton? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var leftBarButtons: [SeatGeekSDK.NavBarButton]? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var rightBarButton: SeatGeekSDK.NavBarButton? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var rightBarButtons: [SeatGeekSDK.NavBarButton]? {
+    @objc get
+    @objc set
+  }
+}
+extension Foundation.NSAttributedString {
+  @objc dynamic public func sgk_size(forWidth: CoreFoundation.CGFloat) -> CoreFoundation.CGSize
+}
+@objc(SGCountrySelectorViewModel) public class CountrySelectorViewModel : ObjectiveC.NSObject {
+  public struct Item : Swift.Identifiable, Swift.Hashable {
+    public var id: Swift.String
+    public var name: Swift.String
+    public func hash(into hasher: inout Swift.Hasher)
+    public static func == (a: SeatGeekSDK.CountrySelectorViewModel.Item, b: SeatGeekSDK.CountrySelectorViewModel.Item) -> Swift.Bool
+    public typealias ID = Swift.String
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let options: [SeatGeekSDK.SGPaymentMethodBillingInfoFieldOption]
+  final public let initialSelectedValueIndex: Swift.Int?
+  public var initialSelectedItemIdentifier: Swift.String? {
+    get
+  }
+  public var initialSelectedItem: SeatGeekSDK.CountrySelectorViewModel.Item? {
+    get
+  }
+  @Combine.Published @_projectedValueProperty($searchQuery) public var searchQuery: Swift.String? {
+    get
+    set
+    _modify
+  }
+  public var $searchQuery: Combine.Published<Swift.String?>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public var isSearchSupported: Swift.Bool {
+    get
+  }
+  public var itemsPublisher: some Combine.Publisher {
+    get
+  }
+  @objc required public init(options: [SeatGeekSDK.SGPaymentMethodBillingInfoFieldOption], initialSelectedValue: Swift.String)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class ReadWriteLock<Object> {
+  public func read<R>(_ fn: (Object) -> R) -> R
+  public func write(_ fn: @escaping (inout Object) -> Swift.Void)
+  @objc deinit
+}
+@objc(SGKCheckoutAddressViewModel) final public class CheckoutAddressViewModel : ObjectiveC.NSObject {
+  @objc public init(initialStreetAddress: Swift.String)
+  @objc deinit
+}
+extension SeatGeekSDK.CheckoutAddressViewModel : MapKit.MKLocalSearchCompleterDelegate {
+  @objc final public func completerDidUpdateResults(_ completer: MapKit.MKLocalSearchCompleter)
+  @objc final public func completer(_ completer: MapKit.MKLocalSearchCompleter, didFailWithError error: Swift.Error)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SGNavBarTrackButton) @_Concurrency.MainActor(unsafe) public class NavBarTrackButton : SeatGeekSDK.NavBarButton {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SGFormFieldAccessoryBar) @_Concurrency.MainActor(unsafe) public class FormFieldAccessoryBar : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public var accessoryButton: UIKit.UIButton? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public init(textFields: [UIKit.UITextField], initialTextField: UIKit.UITextField)
+  @objc deinit
+}
+extension SeatGeekSDK.ActionButton {
+  @objc(SGActionButtonColorStyle) public enum ColorStyle : Swift.Int {
+    case iconPrimary, green, light, disabled, none
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+@objc public protocol CheckoutViewModelProtocol {
+  @objc func addDiscount(code: Swift.String, eventID: Swift.String?, marketName: Swift.String?, completion: @escaping (SeatGeekSDK.CodeValidationResponse) -> Swift.Void)
+  @objc func fetchSummaryThenDo(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock?, fail: SeatGeekSDK.SGAPIFailBlock?)
+  @objc func submitThenDo(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock?, fail: SeatGeekSDK.SGAPIFailBlock?)
+  @objc func abandonCart(purchase: SeatGeekSDK.SGCheckoutPurchase)
+  @objc func selectAddon(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc func addPaymentMethod(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly, isSandbox: Swift.Bool, success: SeatGeekSDK.MGBlockWithContext!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc func deletePaymentMethod(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc func updateAcknowledgements(purchase: SeatGeekSDK.SGCheckoutPurchase, success: (() -> Swift.Void)?, fail: (([SeatGeekSDK.SGAPIError]?) -> Swift.Void)?)
+  @objc func updateContact(purchase: SeatGeekSDK.SGCheckoutPurchase, success: (() -> Swift.Void)?, fail: (([SeatGeekSDK.SGAPIError]?) -> Swift.Void)?)
+}
+@_inheritsConvenienceInitializers @objc(SGSelectableListRowView) @_Concurrency.MainActor(unsafe) public class SelectableListRowView : SeatGeekSDK.VerticalListRowView {
+  @objc @_Concurrency.MainActor(unsafe) public var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var subtitle: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var decoratorText: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var descriptionText: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var titleTypestyle: SeatGeekSDK.Typestyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var titleDarkTypestyle: SeatGeekSDK.Typestyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var subtitleTypestyle: SeatGeekSDK.Typestyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var subtitleDarkTypestyle: SeatGeekSDK.Typestyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var descriptionTypestyle: SeatGeekSDK.Typestyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var descriptionDarkTypestyle: SeatGeekSDK.Typestyle {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var selectedBorderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var selectedBorderDarkColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var unselectedBorderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var unselectedBorderDarkColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isSelected: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var leftImageName: Swift.String?
+  @_Concurrency.MainActor(unsafe) public init(useDarkStyle: Swift.Bool, leftImageName: Swift.String? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension SeatGeekSDK.Typestyle {
+  public static let heading1: SeatGeekSDK.Typestyle
+  public static let heading2: SeatGeekSDK.Typestyle
+  public static let heading3: SeatGeekSDK.Typestyle
+  public static let heading4: SeatGeekSDK.Typestyle
+  public static let subtitle: SeatGeekSDK.Typestyle
+  public static let terms: SeatGeekSDK.Typestyle
+  public static let termsStrong: SeatGeekSDK.Typestyle
+  public static let text1Default: SeatGeekSDK.Typestyle
+  public static let text1Strong: SeatGeekSDK.Typestyle
+  public static let text2Default: SeatGeekSDK.Typestyle
+  public static let text2Strong: SeatGeekSDK.Typestyle
+  public static let text3Default: SeatGeekSDK.Typestyle
+  public static let text3Strong: SeatGeekSDK.Typestyle
+  public static let text4Default: SeatGeekSDK.Typestyle
+  public static let text4Strong: SeatGeekSDK.Typestyle
+  public static let uppercase: SeatGeekSDK.Typestyle
+}
+extension Swift.Encodable {
+  public var dictionary: [Swift.String : Any] {
+    get
+  }
+}
+extension UIKit.UIColor {
+  @objc(initWithHex:) convenience dynamic public init(hex: Swift.UInt32)
+  @objc(initWithHex:alpha:) convenience dynamic public init(hex: Swift.UInt32, alpha: CoreFoundation.CGFloat)
+  @objc convenience dynamic public init?(hexString: Swift.String?)
+  @objc dynamic public func interpolate(to color: UIKit.UIColor, t: CoreFoundation.CGFloat) -> UIKit.UIColor
+  @objc dynamic public func with(overlay: UIKit.UIColor, alpha: CoreFoundation.CGFloat) -> UIKit.UIColor
+  @objc(listingColorForBucket:) public static func listingColor(for listingColor: SeatGeekSDK.ListingColor) -> UIKit.UIColor
+}
+public enum AnyCodable : Swift.Equatable {
+  case string(Swift.String)
+  case bool(Swift.Bool)
+  case int(Swift.Int64)
+  case double(Swift.Double)
+  case object([Swift.String : SeatGeekSDK.AnyCodable])
+  case array([SeatGeekSDK.AnyCodable])
+  public static func == (a: SeatGeekSDK.AnyCodable, b: SeatGeekSDK.AnyCodable) -> Swift.Bool
+}
+extension SeatGeekSDK.AnyCodable : Swift.Codable {
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension CoreFoundation.CGFloat {
+  public static var onePixel: CoreFoundation.CGFloat {
+    get
+  }
+  public static var hairlineWidth: CoreFoundation.CGFloat {
+    get
+  }
+  public static var statusBarHeight: CoreFoundation.CGFloat {
+    get
+  }
+}
+@objc extension SeatGeekSDK.SGListing {
+  @objc dynamic public var localizedDisplayPriceText: Swift.String {
+    @objc get
+  }
+  @objc dynamic public var localizedDisplayFeesText: Swift.String {
+    @objc get
+  }
+  @objc dynamic public var localizedServerDisplayPriceText: Swift.String {
+    @objc get
+  }
+  @objc dynamic public var localizedSeatGeekDisplayPriceText: Swift.String {
+    @objc get
+  }
+}
+extension UIKit.UIStoryboard {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public class func instantiateCreditCardScannerViewController() -> SeatGeekSDK.CreditCardScannerViewController
+}
+@_hasMissingDesignatedInitializers @objc(SGCreditCardDetails) public class CreditCardDetails : ObjectiveC.NSObject, Foundation.NSCopying {
+  @objc final public let creditCardNumber: Swift.String
+  @objc final public let expirationMonth: Foundation.NSNumber?
+  @objc final public let expirationYear: Foundation.NSNumber?
+  @objc public func copy(with zone: ObjectiveC.NSZone? = nil) -> Any
+  @objc deinit
+}
+@objc(SGCreditCardScannerViewControllerDelegate) public protocol CreditCardScannerViewControllerDelegate {
+  @objc(creditCardScannerViewController:didScanCreditCardDetails:) func creditCardScannerViewController(_ creditCardScannerViewController: SeatGeekSDK.CreditCardScannerViewController, didScan creditCardDetails: SeatGeekSDK.CreditCardDetails)
+}
+@_inheritsConvenienceInitializers @objc(SGCreditCardScannerViewController) @_Concurrency.MainActor(unsafe) public class CreditCardScannerViewController : UIKit.UIViewController {
+  @objc @_Concurrency.MainActor(unsafe) weak public var delegate: SeatGeekSDK.CreditCardScannerViewControllerDelegate?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension SeatGeekSDK.CreditCardScannerViewController : AVFoundation.AVCaptureVideoDataOutputSampleBufferDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func captureOutput(_ output: AVFoundation.AVCaptureOutput, didOutput sampleBuffer: CoreMedia.CMSampleBuffer, from connection: AVFoundation.AVCaptureConnection)
+}
+@objc(SGKCheckoutAPIService) public protocol CheckoutAPIService {
+  @objc func addDiscount(code: Swift.String, eventID: Swift.String?, marketName: Swift.String?, completion: @escaping (SeatGeekSDK.CodeValidationResponse) -> Swift.Void)
+  @objc func fetchSummaryThenDo(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock?, fail: SeatGeekSDK.SGAPIFailBlock?)
+  @objc func submitThenDo(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock?, fail: SeatGeekSDK.SGAPIFailBlock?)
+  @objc func abandonCart(purchase: SeatGeekSDK.SGCheckoutPurchase)
+  @objc func selectAddon(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc func addPaymentMethod(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly, isSandbox: Swift.Bool, success: SeatGeekSDK.MGBlockWithContext!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc func deletePaymentMethod(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc func updateAcknowledgements(purchase: SeatGeekSDK.SGCheckoutPurchase, success: (() -> Swift.Void)?, fail: (([SeatGeekSDK.SGAPIError]?) -> Swift.Void)?)
+  @objc func updateContact(purchase: SeatGeekSDK.SGCheckoutPurchase, success: (() -> Swift.Void)?, fail: (([SeatGeekSDK.SGAPIError]?) -> Swift.Void)?)
+}
+extension SeatGeekSDK.SGPurchaseLineItem {
+  public func localizedTotalPriceText(forISOCountryCode isoCountryCode: Swift.String, isoCurrencyCode: Swift.String) -> Swift.String?
+  public func localizedUnitPriceText(forISOCountryCode isoCountryCode: Swift.String, isoCurrencyCode: Swift.String) -> Swift.String?
+}
+@objc(SGPriceFormattingTextFieldDelegate) @_Concurrency.MainActor(unsafe) public class PriceFormattingTextFieldDelegate : ObjectiveC.NSObject, UIKit.UITextFieldDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public var price: Swift.Float {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var isoCurrencyCode: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var attributedAccessoryText: Foundation.NSAttributedString? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) required public init(textField: UIKit.UITextField, priceChangeHandler: @escaping (_ priceFormattingTextFieldDelegate: SeatGeekSDK.PriceFormattingTextFieldDelegate, _ price: Swift.Float) -> Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField, reason: UIKit.UITextField.DidEndEditingReason)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SGNavBarBackButton) @_Concurrency.MainActor(unsafe) public class NavBarBackButton : SeatGeekSDK.NavBarButton {
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension SeatGeekSDK.GeneralMessagingController {
+  @objc @_Concurrency.MainActor(unsafe) public static func nflVerifiedPrimaryController() -> SeatGeekSDK.GeneralMessagingController
+  @objc @_Concurrency.MainActor(unsafe) public static func buyerGuaranteeController(showsCloseButton: Swift.Bool = true) -> SeatGeekSDK.GeneralMessagingController
+  @objc @_Concurrency.MainActor(unsafe) public static func calloutController(title: Swift.String, subtitle: Swift.String? = nil, image: UIKit.UIImage?, promotion: SeatGeekSDK.SGPromotion? = nil, learnMore: Swift.Bool = false) -> SeatGeekSDK.GeneralMessagingController
+}
+extension SeatGeekSDK.ActionButton {
+  @objc(SGActionButtonSizeStyle) public enum SizeStyle : Swift.Int {
+    case fullWidth, primary, secondary, none
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+}
+@_hasMissingDesignatedInitializers @objc(SGKPayoutPersonalAddressController) @_Concurrency.MainActor(unsafe) public class PayoutPersonalAddressController : SeatGeekSDK.SGNavigatorChildController, UIKit.UITextFieldDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public init(listing: SeatGeekSDK.SGPublicListing?, payoutMethod: SeatGeekSDK.SGPayoutMethod? = nil, saveOnEdit: Swift.Bool = true, onSubmit: SeatGeekSDK.VoidClosure? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @objc deinit
+}
+extension SeatGeekSDK.PayoutPersonalAddressController : SeatGeekSDK.CheckoutAddressControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateAddressFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateCityFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateStateFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateZipCodeFromAutoSuggest text: Swift.String?)
+}
+@_hasMissingDesignatedInitializers @objc @_Concurrency.MainActor(unsafe) final public class PaymentMethodSelectController : SeatGeekSDK.SGCheckoutEditScreen {
+  @objc @_Concurrency.MainActor(unsafe) public init(checkoutViewModel: SeatGeekSDK.CheckoutViewModelProtocol = CheckoutViewModel(checkoutAPIService: StatelessCheckoutAPIService()), allowSelectApplePay: Swift.Bool = false, allowSelectAffirmPaymentMethod: Swift.Bool = false, transfer: SeatGeekSDK.SGTransfer? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewSafeAreaInsetsDidChange()
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override final public func viewDidDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override final public func transitionAnimation() -> SeatGeekSDK.SGNavigatorAnimation
+  @_Concurrency.MainActor(unsafe) @objc override final public func footer() -> UIKit.UIView
+  @_Concurrency.MainActor(unsafe) @objc override final public func undoChanges()
+  @_Concurrency.MainActor(unsafe) @objc override final public func saveChangesThenDo(_ success: SeatGeekSDK.MGBlock!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc deinit
+}
+extension SeatGeekSDK.PaymentMethodSelectController {
+  @objc @_Concurrency.MainActor(unsafe) public static func controller(allowSelectApplePay: Swift.Bool = true, transfer: SeatGeekSDK.SGTransfer) -> SeatGeekSDK.PaymentMethodSelectController
+}
+@_inheritsConvenienceInitializers @objc(SGVerticalListView) @_Concurrency.MainActor(unsafe) public class VerticalListView : UIKit.UIScrollView {
+  @objc @_Concurrency.MainActor(unsafe) public var isEditing: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc convenience dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public class var requiresConstraintBasedLayout: Swift.Bool {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) public func rows() -> [SeatGeekSDK.VerticalListRowView]
+  @objc(addView:) @_Concurrency.MainActor(unsafe) public func add(view: SeatGeekSDK.VerticalListRowView)
+  @objc @_Concurrency.MainActor(unsafe) public func reset()
+  @_Concurrency.MainActor(unsafe) public func setItemSpacing(space: CoreFoundation.CGFloat)
+  @objc(deleteRow:animated:) @_Concurrency.MainActor(unsafe) public func delete(row: SeatGeekSDK.VerticalListRowView, animated: Swift.Bool)
+  @objc(setEditing:animated:) @_Concurrency.MainActor(unsafe) public func setEditing(editing: Swift.Bool, animated: Swift.Bool)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(SGKAPIValidatorPayoutBankTransitNumber) public class APIValidatorPayoutBankTransitNumber : SeatGeekSDK.SGAPIValidator {
+  @objc override dynamic public class func validationError(for string: Swift.String!, context: Any!, compact: Swift.Bool) -> Swift.String!
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SGKPayoutPersonalBusinessAddressController) @_Concurrency.MainActor(unsafe) public class PayoutPersonalBusinessAddressController : SeatGeekSDK.SGNavigatorChildController, UIKit.UITextFieldDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public init(listing: SeatGeekSDK.SGPublicListing?, payoutMethod: SeatGeekSDK.SGPayoutMethod? = nil, saveOnEdit: Swift.Bool = true, onSubmit: SeatGeekSDK.VoidClosure? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @objc deinit
+}
+extension SeatGeekSDK.PayoutPersonalBusinessAddressController : SeatGeekSDK.CheckoutAddressControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateAddressFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateCityFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateStateFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateZipCodeFromAutoSuggest text: Swift.String?)
+}
+extension CoreLocation.CLLocationCoordinate2D : Swift.Equatable {
+  public static func == (left: CoreLocation.CLLocationCoordinate2D, right: CoreLocation.CLLocationCoordinate2D) -> Swift.Bool
+  public static func != (left: CoreLocation.CLLocationCoordinate2D, right: CoreLocation.CLLocationCoordinate2D) -> Swift.Bool
+}
+extension UIKit.UIView.AnimationOptions {
+  public static var sgk_keyboardCurve: UIKit.UIView.AnimationOptions {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(SGKPayoutUserInfoController) @_Concurrency.MainActor(unsafe) public class PayoutUserInfoController : SeatGeekSDK.SGNavigatorChildController, UIKit.UITextFieldDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public init(listing: SeatGeekSDK.SGPublicListing?, payoutMethod: SeatGeekSDK.SGPayoutMethod? = nil, saveOnEdit: Swift.Bool = true, onSubmit: SeatGeekSDK.VoidClosure? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @objc deinit
+}
+public enum NetworkTask {
+  case requestPlain
+  case requestParameters(parameters: [Swift.String : Any])
+  case requestBody(data: Foundation.Data)
+  case requestJSONEncodable(object: Swift.Encodable)
+  case requestCompositeData(data: Foundation.Data, parameters: [Swift.String : Any])
+  case requestCompositeObject(object: Swift.Encodable, parameters: [Swift.String : Any])
+  case requestBodyParameters(parameters: [Swift.String : Any], queryStringEncoding: SeatGeekSDK.QueryStringEncoding)
+}
+@_inheritsConvenienceInitializers @objc(SGSearchField) @_Concurrency.MainActor(unsafe) public class SearchField : UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func clearButtonRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func placeholderRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func borderRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol HTTPClient : AnyObject {
+  associatedtype Endpoint : SeatGeekSDK.EndpointTarget
+  #if compiler(>=5.3) && $AsyncAwait
+  func request(_ endpoint: Self.Endpoint) async -> Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>
+  #endif
+  func request(_ endpoint: Self.Endpoint, callbackQueue: Dispatch.DispatchQueue?, completion: @escaping (Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>) -> Swift.Void)
+}
+open class NetworkProvider<Endpoint> : SeatGeekSDK.HTTPClient where Endpoint : SeatGeekSDK.EndpointTarget {
+  final public let urlSession: SeatGeekSDK.NetworkSession
+  public var plugins: [SeatGeekSDK.PluginType]
+  public init(urlSession: SeatGeekSDK.NetworkSession = URLSession.shared, plugins: [SeatGeekSDK.PluginType] = [])
+  public func prepareRequest(with endpoint: Endpoint) throws -> Foundation.URLRequest
+  public func validate(_ response: SeatGeekSDK.NetworkResponse, endpoint: Endpoint) -> Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>
+  public func processOn(_ callbackQueue: Dispatch.DispatchQueue?, completion: @autoclosure @escaping () -> Swift.Void)
+  #if compiler(>=5.3) && $AsyncAwait
+  public func request(_ endpoint: Endpoint) async -> Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>
+  #endif
+  public func request(_ endpoint: Endpoint, callbackQueue: Dispatch.DispatchQueue? = .main, completion: @escaping (Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>) -> Swift.Void)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(SGKUpcomingEventDataSource) public class UpcomingEventDataSource : ObjectiveC.NSObject {
+  @objc public func fetchUpcomingEvent()
+  @objc(onFetchUpcomingEvent:) public func onFetchUpcomingEventFinished(completionBlock: @escaping ((SeatGeekSDK.UpcomingEvent?, Swift.Error?) -> Swift.Void))
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension UIKit.UIImage {
+  @objc dynamic public func sgk_colored(color: UIKit.UIColor) -> UIKit.UIImage
+  @objc dynamic public func sgk_imageByAdding(images: [UIKit.UIImage]) -> UIKit.UIImage
+  @objc dynamic public class func sgk_clockIcon() -> UIKit.UIImage
+}
+@objc(SGVerticalListRowView) @_Concurrency.MainActor(unsafe) public class VerticalListRowView : UIKit.UIControl {
+  @objc @_Concurrency.MainActor(unsafe) public var isEditable: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var onDeleteTap: SeatGeekSDK.VoidClosure?
+  @objc @_Concurrency.MainActor(unsafe) public var onTap: SeatGeekSDK.VoidClosure?
+  @objc @_Concurrency.MainActor(unsafe) public var willBeginEditing: SeatGeekSDK.VoidClosure?
+  @objc @_Concurrency.MainActor(unsafe) public var willEndEditing: SeatGeekSDK.VoidClosure?
+  @objc @_Concurrency.MainActor(unsafe) public var contentView: UIKit.UIView? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public func setEditing(editing: Swift.Bool, animated: Swift.Bool)
+  @objc deinit
+}
+@objc(SGKUpcomingEventError) public enum UpcomingEventError : Swift.Int {
+  case userLoggedOut = -1
+  case networkError = -2
+  case noEventFound = -3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(SGSDKTracker) public class SDKTracker : ObjectiveC.NSObject {
+  @objc public init(clientID: Swift.String)
+  @objc public func logMParticleEvent(_ eventName: Swift.String, withEventMetadata eventMetadata: [Swift.String : Any]?)
+  @objc public func setMParticleUserAttributeForKey(_ key: Swift.String, value: Any)
+  @objc public func removeMParticleUserAttribute(forKey key: Swift.String)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class UnderlinedTextField : UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var placeholder: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var errorMessage: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var shouldHideCaret: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func sizeThatFits(_ size: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func becomeFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func resignFirstResponder() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func textRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func editingRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func placeholderRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func clearButtonRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func leftViewRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func rightViewRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func borderRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func caretRect(for position: UIKit.UITextPosition) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func canPerformAction(_ action: ObjectiveC.Selector, withSender sender: Any?) -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class GeneralMessagingController : SeatGeekSDK.SGNavigatorChildController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol PluginType {
+  func prepare(_ request: Foundation.URLRequest, endpoint: SeatGeekSDK.EndpointTarget) -> Foundation.URLRequest
+  func willSend(_ request: Foundation.URLRequest, endpoint: SeatGeekSDK.EndpointTarget)
+  func process(_ result: Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>, endpoint: SeatGeekSDK.EndpointTarget) -> Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>
+}
+extension SeatGeekSDK.PluginType {
+  public func prepare(_ request: Foundation.URLRequest, endpoint: SeatGeekSDK.EndpointTarget) -> Foundation.URLRequest
+  public func willSend(_ request: Foundation.URLRequest, endpoint: SeatGeekSDK.EndpointTarget)
+  public func process(_ result: Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>, endpoint: SeatGeekSDK.EndpointTarget) -> Swift.Result<SeatGeekSDK.NetworkResponse, SeatGeekSDK.RequestError>
+}
+extension SeatGeekSDK.SGAlertView {
+  @objc public static func noEmailAccount(recipientEmail: Swift.String?) -> SeatGeekSDK.SGAlertView
+}
+@objc public enum ContactSupportSource : Swift.Int {
+  case accountSettings
+  case myTickets
+  case checkout
+  case eventTickets
+  case sellTickets
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(SGContactSupportManager) public class ContactSupportManager : ObjectiveC.NSObject {
+  @objc public static let defaultCustomerServiceEmail: Swift.String
+  @objc public init(contactSupportSource: SeatGeekSDK.ContactSupportSource)
+  public func getSupportOptions(success: @escaping SeatGeekSDK.VoidClosure, failure: @escaping SeatGeekSDK.ErrorClosure)
+  @objc deinit
+}
+extension Swift.KeyedEncodingContainerProtocol {
+  public mutating func encodeIfPresent<T>(_ object: T?, forKey key: Self.Key) throws where T : ObjectiveC.NSObject, T : Foundation.NSCoding
+}
+extension Swift.KeyedDecodingContainerProtocol {
+  public func decodeIfPresent<T>(_ type: T.Type, forKey key: Self.Key) -> T? where T : ObjectiveC.NSObject, T : Foundation.NSCoding
+}
+@objc(SGMyTicketsRefreshPriority) public enum RefreshPriority : Swift.Int {
+  case required
+  case normal
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers final public class SGMyTickets : ObjectiveC.NSObject {
+  @objc public static func refresh(with priority: SeatGeekSDK.RefreshPriority)
+  @objc public static func refresh(with priority: SeatGeekSDK.RefreshPriority, onCompletion: @escaping (Swift.Bool) -> Swift.Void)
+  @objc public static func clear()
+  @objc public static func onDidLoad(owner: Swift.AnyObject, _ do: @escaping SeatGeekSDK.VoidClosure)
+  @objc public static var numberOfIncomingTranfers: Swift.Int {
+    @objc get
+  }
+  @objc public static var hasTakeoverEvent: Swift.Bool {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+public typealias TapGestureClosure = (UIKit.UITapGestureRecognizer) -> Swift.Void
+@_hasMissingDesignatedInitializers @objc(SGHelpCenterWebViewController) @_Concurrency.MainActor(unsafe) public class HelpCenterWebViewController : UIKit.UIViewController {
+  @objc @_Concurrency.MainActor(unsafe) convenience public init(uiOrigin: SeatGeekSDK.SGTrackerUserHelpUIOrigin, contactSupportManager: SeatGeekSDK.ContactSupportManager)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func loadView()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @objc deinit
+}
+extension SeatGeekSDK.HelpCenterWebViewController : WebKit.WKNavigationDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: @escaping (WebKit.WKNavigationActionPolicy) -> Swift.Void)
+}
+extension UIKit.UIStoryboard {
+  @objc(instantiateStripeVerifyViewControllerWithPayoutMethod:) @_Concurrency.MainActor(unsafe) dynamic public class func instantiateStripeVerifyViewController(with payoutMethod: SeatGeekSDK.SGPayoutMethod) -> SeatGeekSDK.StripeVerifyViewController
+}
+@_inheritsConvenienceInitializers @objc @_Concurrency.MainActor(unsafe) public class StripeVerifyViewController : UIKit.UIViewController, UIKit.UINavigationControllerDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public var payoutMethod: SeatGeekSDK.SGPayoutMethod?
+  @objc @_Concurrency.MainActor(unsafe) public var confirmationBlock: ((SeatGeekSDK.StripeVerifyViewController) -> Swift.Void)?
+  @_Concurrency.MainActor(unsafe) @objc public func navigationController(_ navigationController: UIKit.UINavigationController, willShow viewController: UIKit.UIViewController, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SGPublicSaleSuccessController) @_Concurrency.MainActor(unsafe) public class PublicSaleSuccessController : UIKit.UIViewController {
+  @objc @_Concurrency.MainActor(unsafe) weak public var bottomModalNavigator: SeatGeekSDK.SGBottomModalNavigator?
+  @objc @_Concurrency.MainActor(unsafe) convenience public init(listing: SeatGeekSDK.SGPublicListing)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @objc deinit
+}
+extension UIKit.UIScrollView {
+  @objc(sgk_scrollToTopAnimated:) @_Concurrency.MainActor(unsafe) dynamic public func sgk_scrollToTop(animated: Swift.Bool)
+  @objc(sgk_scrollToBottomAnimated:) @_Concurrency.MainActor(unsafe) dynamic public func sgk_scrollToBottom(animated: Swift.Bool)
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var sgk_heightWithoutInsets: CoreFoundation.CGFloat {
+    @objc get
+  }
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var sgk_isScrolledToTop: Swift.Bool {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) public var sgk_isScrolledToBottom: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var sgk_distanceFromBottom: CoreFoundation.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var sgk_bottomScrollYOffset: CoreFoundation.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var sgk_canScroll: Swift.Bool {
+    get
+  }
+}
+public enum RequestMethod : Swift.String {
+  case delete
+  case get
+  case patch
+  case post
+  case put
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @objc(SGKAPIValidatorPayoutBankRoutingNumber) public class APIValidatorPayoutBankRoutingNumber : SeatGeekSDK.SGAPIValidator {
+  @objc override dynamic public class func validationError(for string: Swift.String!, context: Any!, compact: Swift.Bool) -> Swift.String!
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SGPayoutMethodSelectionController) @_Concurrency.MainActor(unsafe) public class PayoutMethodSelectionController : SeatGeekSDK.SGNavigatorChildController {
+  @objc @_Concurrency.MainActor(unsafe) public init(listing: SeatGeekSDK.SGPublicListing?, payoutMethod: SeatGeekSDK.SGPayoutMethod? = nil, availablePayoutMethods: [SeatGeekSDK.SGPayoutMethod]? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(SGKAPIPrivateColorProvider) public class APIPrivateColorProvider : ObjectiveC.NSObject {
+  @objc public static func fulfillmentStatusColor(statusString: Swift.String) -> UIKit.UIColor
+  @objc public static func ingestionStatusColor(statusString: Swift.String) -> UIKit.UIColor
+  @objc public static func payoutStatusColor(statusString: Swift.String) -> UIKit.UIColor
+  @objc public static func transferStatusColor(statusString: Swift.String) -> UIKit.UIColor
+  @objc public static func promotionAccentColor(type: SeatGeekSDK.SGKPromotionType) -> UIKit.UIColor
+  @objc public static func timelineEntryColor(mood: SeatGeekSDK.SGKPurchaseTimelineEntryStatusMood) -> UIKit.UIColor
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension Swift.KeyedDecodingContainerProtocol {
+  public func decodeOrNil<T>(_ type: T.Type, forKey key: Self.Key, shouldAssert: Swift.Bool = false) -> T? where T : Swift.Decodable
+  public func decodeColorOrNil(forKey key: Self.Key) -> UIKit.UIColor?
+  public func decodeColor(forKey key: Self.Key) throws -> UIKit.UIColor
+  public func decodeDateOrNil(withFormatter formatter: Foundation.DateFormatter, forKey key: Self.Key) -> Foundation.Date?
+  public func decodeDate(withFormatter formatter: Foundation.DateFormatter, forKey key: Self.Key) throws -> Foundation.Date
+  public func nestedContainerOrNil<NestedKey>(keyedBy type: NestedKey.Type, forKey key: Self.Key, shouldAssert: Swift.Bool = false) -> Swift.KeyedDecodingContainer<NestedKey>? where NestedKey : Swift.CodingKey
+  public func decodeForceStringOrNil(forKey key: Self.Key) -> Swift.String?
+  public func decodeForceDoubleOrNil(forKey key: Self.Key) -> Swift.Double?
+  public func decodeID(forKey key: Self.Key) throws -> Swift.String
+  public func decodeIDOrNil(forKey key: Self.Key) -> Swift.String?
+  public func decodeDecimal(forKey key: Self.Key) throws -> Foundation.Decimal
+  public func decodeOrNilAs<T>(_ type: T.Type, forKey key: Self.Key) -> T? where T : Swift.Decodable
+  public func decodeAs<T>(_ type: T.Type, forKey key: Self.Key) throws -> T where T : Swift.Decodable
+  public func decodeLossyArrayOrEmpty<T>(_ type: T.Type, forKey key: Self.Key, shouldAssert: Swift.Bool = false) -> [T] where T : Swift.Decodable
+  public func decodeLossyArrayOrNil<T>(_ type: T.Type, forKey key: Self.Key, shouldAssert: Swift.Bool = false) -> [T]? where T : Swift.Decodable
+  public func decodeLossyArray<T>(_ type: T.Type, forKey key: Self.Key, shouldAssert: Swift.Bool = false) throws -> [T] where T : Swift.Decodable
+}
+@objc @_inheritsConvenienceInitializers public class APIValidatorPayoutEIN : SeatGeekSDK.SGAPIValidator {
+  @objc override dynamic public class func validationError(for string: Swift.String!, context: Any!, compact: Swift.Bool) -> Swift.String!
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension QuartzCore.CALayer {
+  @objc(sgk_roundCornersWithRadii:fillColor:borderWidth:borderColor:) dynamic public func roundCorners(withRadii radii: [CoreFoundation.CGFloat], fillColor: UIKit.UIColor, borderWidth: CoreFoundation.CGFloat, borderColor: UIKit.UIColor)
+}
+public typealias VoidClosure = () -> Swift.Void
+public typealias ErrorClosure = (_ error: Swift.Error) -> Swift.Void
+extension UIKit.UIApplication {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public var firstKeyWindow: UIKit.UIWindow? {
+    @objc get
+  }
+}
+@_hasMissingDesignatedInitializers @objc(SGKPayoutBusinessAddressController) @_Concurrency.MainActor(unsafe) public class PayoutBusinessAddressController : SeatGeekSDK.SGNavigatorChildController, UIKit.UITextFieldDelegate {
+  @objc @_Concurrency.MainActor(unsafe) public init(listing: SeatGeekSDK.SGPublicListing?, payoutMethod: SeatGeekSDK.SGPayoutMethod? = nil, saveOnEdit: Swift.Bool = true, onSubmit: SeatGeekSDK.VoidClosure? = nil)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc public func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @objc deinit
+}
+extension SeatGeekSDK.PayoutBusinessAddressController : SeatGeekSDK.CheckoutAddressControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateAddressFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateCityFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateStateFromAutoSuggest text: Swift.String?)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func checkoutAddressController(_ checkoutAddressController: SeatGeekSDK.CheckoutAddressController, didUpdateZipCodeFromAutoSuggest text: Swift.String?)
+}
+extension UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public func roundToCircle()
+  @_Concurrency.MainActor(unsafe) public func roundCorners(to radius: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public func unroundCorners()
+  @_Concurrency.MainActor(unsafe) public func wrapToContent()
+}
+public typealias Parameters = [Swift.String : Any]
+public protocol ParameterEncoding {
+  func encode(_ urlRequest: Foundation.URLRequest, with parameters: SeatGeekSDK.Parameters?) -> Foundation.URLRequest
+}
+public enum PlusSignEncodeType {
+  case percentEncoded
+  public static func == (a: SeatGeekSDK.PlusSignEncodeType, b: SeatGeekSDK.PlusSignEncodeType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct QueryStringEncoding : SeatGeekSDK.ParameterEncoding {
+  public func encode(_ urlRequest: Foundation.URLRequest, with parameters: SeatGeekSDK.Parameters?) -> Foundation.URLRequest
+  public init(plusSignEncodeType: SeatGeekSDK.PlusSignEncodeType = .percentEncoded)
+}
+@_inheritsConvenienceInitializers @objc(SGKStatelessCheckoutAPIService) public class StatelessCheckoutAPIService : ObjectiveC.NSObject, SeatGeekSDK.CheckoutAPIService {
+  @objc deinit
+  @objc public func addDiscount(code: Swift.String, eventID: Swift.String?, marketName: Swift.String?, completion: @escaping (SeatGeekSDK.CodeValidationResponse) -> Swift.Void)
+  @objc public func abandonCart(purchase: SeatGeekSDK.SGCheckoutPurchase)
+  @objc public func fetchSummaryThenDo(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock?, fail: SeatGeekSDK.SGAPIFailBlock?)
+  @objc public func submitThenDo(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock?, fail: SeatGeekSDK.SGAPIFailBlock?)
+  @objc public func selectAddon(purchase: SeatGeekSDK.SGCheckoutPurchase, success: SeatGeekSDK.MGBlock!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  public func needToSendToSpreedly(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly) -> Swift.Bool
+  @objc public func addPaymentMethod(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly, isSandbox: Swift.Bool, success: SeatGeekSDK.MGBlockWithContext!, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc public func deletePaymentMethod(paymentMethod: SeatGeekSDK.SGPaymentMethodSpreedly, fail: SeatGeekSDK.SGAPIFailBlock!)
+  @objc public func updateAcknowledgements(purchase: SeatGeekSDK.SGCheckoutPurchase, success: (() -> Swift.Void)?, fail: (([SeatGeekSDK.SGAPIError]?) -> Swift.Void)?)
+  @objc public func updateContact(purchase: SeatGeekSDK.SGCheckoutPurchase, success: (() -> Swift.Void)?, fail: (([SeatGeekSDK.SGAPIError]?) -> Swift.Void)?)
+  @objc override dynamic public init()
+}
+public protocol EndpointTarget {
+  var baseURLString: Swift.String { get }
+  var method: SeatGeekSDK.RequestMethod { get }
+  var path: Swift.String { get }
+  var headers: [Swift.String : Swift.String]? { get }
+  var task: SeatGeekSDK.NetworkTask { get }
+  var validationType: SeatGeekSDK.ValidationType { get }
+}
+extension SeatGeekSDK.EndpointTarget {
+  public var validationType: SeatGeekSDK.ValidationType {
+    get
+  }
+}
+public enum RequestError : Swift.Error {
+  case invalidURL
+  case noResponse
+  case validationError(networkResponse: SeatGeekSDK.NetworkResponse)
+  case unknown
+  case decodingError
+  case networkError
+  public var networkResponse: SeatGeekSDK.NetworkResponse? {
+    get
+  }
+}
+extension SeatGeekSDK.RequestError : Swift.Equatable {
+  public static func == (a: SeatGeekSDK.RequestError, b: SeatGeekSDK.RequestError) -> Swift.Bool
+}
+extension UIKit.UIStackView {
+  @discardableResult
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func sgk_addSpace(height: CoreFoundation.CGFloat) -> UIKit.UIView
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func sgk_removeAllArrangedSubviews()
+}
+extension SeatGeekSDK.Typestyle {
+  public static let graphLabel: SeatGeekSDK.Typestyle
+  public static let dealScore: SeatGeekSDK.Typestyle
+  public static let priceDrop: SeatGeekSDK.Typestyle
+  public static let trendingRank: SeatGeekSDK.Typestyle
+  public static let trendingNewLabel: SeatGeekSDK.Typestyle
+  public static let text4InterfaceThin: SeatGeekSDK.Typestyle
+}
+@objc extension SeatGeekSDK.SGObjcTypestyle {
+  @objc public static let graphLabel: SeatGeekSDK.SGObjcTypestyle
+  @objc public static let dealScore: SeatGeekSDK.SGObjcTypestyle
+  @objc public static let priceDrop: SeatGeekSDK.SGObjcTypestyle
+  @objc public static let trendingRank: SeatGeekSDK.SGObjcTypestyle
+  @objc public static let trendingNewLabel: SeatGeekSDK.SGObjcTypestyle
+  @objc public static let text4InterfaceThin: SeatGeekSDK.SGObjcTypestyle
+}
+public struct Typestyle {
+  public var lineHeight: CoreFoundation.CGFloat? {
+    get
+  }
+  public init(_ font: UIKit.UIFont, size: CoreFoundation.CGFloat? = nil, lineHeight: CoreFoundation.CGFloat? = nil, characterSpacing: CoreFoundation.CGFloat? = nil, color: UIKit.UIColor = UIColor.sgTextPrimary, alignment: UIKit.NSTextAlignment = .left, lineBreakMode: UIKit.NSLineBreakMode = .byTruncatingTail)
+  public var textAttributes: [Foundation.NSAttributedString.Key : Any] {
+    get
+  }
+  public var fontAscender: CoreFoundation.CGFloat {
+    get
+  }
+  public var fontDescender: CoreFoundation.CGFloat {
+    get
+  }
+  public var targetBaselineOffset: CoreFoundation.CGFloat {
+    get
+  }
+}
+extension Foundation.NSMutableAttributedString {
+  convenience public init(string: Swift.String, style: SeatGeekSDK.Typestyle)
+}
+extension Swift.String {
+  public func withTypestyle(_ style: SeatGeekSDK.Typestyle) -> Foundation.NSAttributedString
+}
+extension Foundation.NSString {
+  public func withTypestyle(_ style: SeatGeekSDK.Typestyle) -> Foundation.NSAttributedString
+}
+@objc(SGKReturnPolicyEligible) @objcMembers final public class ReturnPolicyEligible : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public func payload() -> [Swift.String : Any]
+  @objc deinit
+  final public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@objc(SGKReturnPolicyIneligible) @objcMembers final public class ReturnPolicyIneligible : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public func payload() -> [Swift.String : Any]
+  @objc deinit
+  final public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc(SGKReturnPolicy) @objcMembers final public class ReturnPolicy : ObjectiveC.NSObject {
+  @objc final public func payload() -> [Swift.String : Any]?
+  @objc public static func returnPolicyFrom(dictionary: [Swift.String : Any]) -> SeatGeekSDK.ReturnPolicy?
+  @objc deinit
+}
+extension Dispatch.DispatchQueue {
+  public func sgk_asyncDeduped(target: Swift.AnyObject, after delay: Foundation.TimeInterval, execute work: @escaping @convention(block) () -> Swift.Void)
+}
+@objc @_Concurrency.MainActor(unsafe) public class ListFooterView : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) weak public var scrollView: UIKit.UIScrollView? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var alwaysShowTopShadow: Swift.Bool {
+    get
+    set
+  }
+  @objc @_Concurrency.MainActor(unsafe) final public let topShadow: SeatGeekSDK.SGGradientView
+  @objc @_Concurrency.MainActor(unsafe) final public let separator: UIKit.UIView
+  @objc @_Concurrency.MainActor(unsafe) public init(frame: CoreFoundation.CGRect, scrollView: UIKit.UIScrollView? = nil)
+  @_Concurrency.MainActor(unsafe) @objc convenience dynamic public init()
+  @available(*, unavailable)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(SGKPayoutBankCountrySelector) @_Concurrency.MainActor(unsafe) public class PayoutBankCountrySelector : SeatGeekSDK.SGNavigatorChildController {
+  @objc @_Concurrency.MainActor(unsafe) public init(selectedBankCountry: SeatGeekSDK.PayoutBankCountry = .defaultBankCountry, onBankCountrySelected: ((SeatGeekSDK.PayoutBankCountry) -> Swift.Void)?)
+  @objc deinit
+}
+extension SeatGeekSDK.NavBarButton {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public class func backButton(for hostingController: UIKit.UIViewController?) -> SeatGeekSDK.NavBarBackButton
+  @objc @_Concurrency.MainActor(unsafe) dynamic public class func backButton() -> SeatGeekSDK.NavBarButton
+  @objc @_Concurrency.MainActor(unsafe) dynamic public class func button(withTitle title: Swift.String) -> SeatGeekSDK.NavBarButton
+  @objc @_Concurrency.MainActor(unsafe) dynamic public class func button(withImage image: UIKit.UIImage?, voiceover: Swift.String) -> SeatGeekSDK.NavBarButton
+}
+@objc(SGNavBarButton) @_Concurrency.MainActor(unsafe) public class NavBarButton : UIKit.UIButton {
+  @objc @_Concurrency.MainActor(unsafe) public var onTap: SeatGeekSDK.MGBlock?
+  @_Concurrency.MainActor(unsafe) weak public var hostingController: UIKit.UIViewController?
+  @objc @_Concurrency.MainActor(unsafe) public var solidLeftMargin: CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public var solidRightMargin: CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public var transparentLeftMargin: CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public var transparentRightMargin: CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public var transparentLeftInset: CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public var transparentRightInset: CoreFoundation.CGFloat
+  @objc @_Concurrency.MainActor(unsafe) public var icon: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var title: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc convenience dynamic public init()
+  @objc @_Concurrency.MainActor(unsafe) public init(hostingController: UIKit.UIViewController?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc @_Concurrency.MainActor(unsafe) public func updateContent()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func updateConstraints()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func didMoveToWindow()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(SGKAPIValidatorPayoutBankInstitutionNumber) public class APIValidatorPayoutBankInstitutionNumber : SeatGeekSDK.SGAPIValidator {
+  @objc override dynamic public class func validationError(for string: Swift.String!, context: Any!, compact: Swift.Bool) -> Swift.String!
+  @objc override dynamic public init()
+  @objc deinit
+}
+@objc extension UIKit.UIFont {
+  public enum Roobert {
+    public static let light: UIKit.UIFont
+    public static let regular: UIKit.UIFont
+    public static let medium: UIKit.UIFont
+    public static let semiBold: UIKit.UIFont
+    public static let bold: UIKit.UIFont
+    public static let heavy: UIKit.UIFont
+  }
+  public enum RoobertAlt {
+    public static var light: UIKit.UIFont {
+      get
+    }
+    public static var regular: UIKit.UIFont {
+      get
+    }
+    public static var medium: UIKit.UIFont {
+      get
+    }
+    public static var semiBold: UIKit.UIFont {
+      get
+    }
+    public static var bold: UIKit.UIFont {
+      get
+    }
+    public static var heavy: UIKit.UIFont {
+      get
+    }
+  }
+  @objc public static func systemFont(weighted weight: UIKit.UIFont.Weight) -> UIKit.UIFont
+  @objc public static func sfFont(ofSize size: CoreFoundation.CGFloat, weight: UIKit.UIFont.Weight) -> UIKit.UIFont
+  @objc public static var acknowledgementDefaultFont: UIKit.UIFont {
+    @objc get
+  }
+  @objc public static var acknowledgementLinkFont: UIKit.UIFont {
+    @objc get
+  }
+  @objc dynamic public func setBold() -> UIKit.UIFont
+}
+@_hasMissingDesignatedInitializers @objc(SGWebViewController) @objcMembers @_Concurrency.MainActor(unsafe) public class WebViewController : UIKit.UIViewController {
+  @objc @_Concurrency.MainActor(unsafe) public static var buyerGuarantee: SeatGeekSDK.WebViewController {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewSafeAreaInsetsDidChange()
+  @objc deinit
+}
+extension SeatGeekSDK.WebViewController : WebKit.WKNavigationDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, didCommit: WebKit.WKNavigation!)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, didFail: WebKit.WKNavigation!, withError: Swift.Error)
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, decidePolicyFor navigationAction: WebKit.WKNavigationAction, decisionHandler: (WebKit.WKNavigationActionPolicy) -> Swift.Void)
+}
+extension SeatGeekSDK.WebViewController : WebKit.WKUIDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func webView(_ webView: WebKit.WKWebView, createWebViewWith configuration: WebKit.WKWebViewConfiguration, for navigationAction: WebKit.WKNavigationAction, windowFeatures: WebKit.WKWindowFeatures) -> WebKit.WKWebView?
+}
+extension SeatGeekSDK.WebViewController : MessageUI.MFMailComposeViewControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func mailComposeController(_ controller: MessageUI.MFMailComposeViewController, didFinishWith result: MessageUI.MFMailComposeResult, error: Swift.Error?)
+}
+extension UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func sgk_roundTopCorners()
+  @objc @_Concurrency.MainActor(unsafe) dynamic public func sgk_roundTopCorners(withYOffset yOffset: CoreFoundation.CGFloat)
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SGKPayoutBusinessAddress) public class PayoutBusinessAddress : ObjectiveC.NSObject {
+  @objc public var name: Swift.String?
+  @objc public var address1: Swift.String?
+  @objc public var address2: Swift.String?
+  @objc public var locality: Swift.String?
+  @objc public var region: Swift.String?
+  @objc public var postalCode: Swift.String?
+  @objc public var country: Swift.String?
+  @objc public var taxId: Swift.String?
+  @objc override dynamic public init()
+  public static func payoutBusinessAddress(from dictionary: [Swift.String : Any]) -> SeatGeekSDK.PayoutBusinessAddress?
+  @objc public func payload() -> [Swift.String : Any]
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc(SGActionButton) @_Concurrency.MainActor(unsafe) final public class ActionButton : UIKit.UIButton {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect = .zero)
+  @objc @_Concurrency.MainActor(unsafe) final public class func button() -> SeatGeekSDK.ActionButton
+  @objc @_Concurrency.MainActor(unsafe) final public func setColorStyle(_ style: SeatGeekSDK.ActionButton.ColorStyle)
+  @objc @_Concurrency.MainActor(unsafe) final public func setSizeStyle(_ style: SeatGeekSDK.ActionButton.SizeStyle)
+  @objc @_Concurrency.MainActor(unsafe) final public func labelTypestyle() -> SeatGeekSDK.SGObjcTypestyle
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override final public var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public func setTitle(_ title: Swift.String?, for state: UIKit.UIControl.State)
+  @_Concurrency.MainActor(unsafe) @objc override final public func setAttributedTitle(_ title: Foundation.NSAttributedString?, for state: UIKit.UIControl.State)
+  @objc @_Concurrency.MainActor(unsafe) final public func setPreferredLongTitle(_ title: Swift.String?, for state: UIKit.UIControl.State)
+  @objc deinit
+}
+extension UIKit.UIControl.State : Swift.Hashable {
+}
+@objc extension UIKit.UIColor {
+  @objc public static var sgIconPrimary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconPrimaryHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconPrimaryAlt: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconPrimaryAltHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconSecondary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconTertiary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconCritical: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconSuccess: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconWarning: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconSpecial: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconSpecialHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgIconDisabled: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBorderPrimary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBorderPrimaryHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBorderPrimaryPressed: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBorderPrimarySelected: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBorderPrimaryAlt: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBorderCritical: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBorderAccessible: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBorderDisabled: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextPrimary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextPrimaryAlt: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextSecondary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextTertiary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextCritical: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextWarning: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextSuccess: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextSpecial: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextMoney: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextLink: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextLinkHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextLinkSelected: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgTextDisabled: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgSocialFacebook: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgSocialLyft: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgSocialSnapchat: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgSocialSpotify: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgSocialSpotifyLogo: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgSocialTwitter: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapAmazing: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapGreat: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapGood: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapOkay: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapModerate: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapDeluxe: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapPremium: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapNoDealScore: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapPackage: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapPackageHighlighted: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapPrime: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapPrimeHighlighted: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapBest: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapExpired: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgMapExpiredHighlighted: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBrandPrimaryDark: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBrandPrimary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBrandPrimaryLight56: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBrandPrimaryLight24: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBrandPrimaryLight08: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBrandSecondaryDark: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBrandSecondary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundPrimary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundPrimaryAlt: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundSecondary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundTertiary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundCritical: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundWarning: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundSuccess: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundDestructive: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundTooltip: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundOverlay: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundDisabled: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundMap: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundButtonPrimary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundButtonPrimaryHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundButtonPrimaryPressed: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundButtonSecondary: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundButtonSecondaryHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundButtonSecondaryPressed: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundControl: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundControlHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundControlPressed: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundControlSelected: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundControlSelectedHover: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgBackgroundControlSelectedPressed: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgDividerDividerApps: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgDividerDividerWeb: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack100: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack80: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack64: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack48: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack32: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack24: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack16: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack12: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack08: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityBlack0: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite08: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite12: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite16: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite24: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite32: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite48: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite64: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite80: UIKit.UIColor {
+    @objc get
+  }
+  @objc public static var sgOpacityWhite100: UIKit.UIColor {
+    @objc get
+  }
+}
+extension SeatGeekSDK.SGAcknowledgement.AgreementType : Swift.Equatable {}
+extension SeatGeekSDK.SGAcknowledgement.AgreementType : Swift.Hashable {}
+extension SeatGeekSDK.SGAcknowledgement.AgreementType : Swift.RawRepresentable {}
+extension SeatGeekSDK.ButtonStyle : Swift.Equatable {}
+extension SeatGeekSDK.ButtonStyle : Swift.Hashable {}
+extension SeatGeekSDK.ButtonStyle : Swift.RawRepresentable {}
+extension SeatGeekSDK.ButtonColorType : Swift.Equatable {}
+extension SeatGeekSDK.ButtonColorType : Swift.Hashable {}
+extension SeatGeekSDK.ButtonColorType : Swift.RawRepresentable {}
+extension SeatGeekSDK.PayoutBankCountry : Swift.Equatable {}
+extension SeatGeekSDK.PayoutBankCountry : Swift.Hashable {}
+extension SeatGeekSDK.PayoutBankCountry : Swift.RawRepresentable {}
+extension SeatGeekSDK.ActionButton.ColorStyle : Swift.Equatable {}
+extension SeatGeekSDK.ActionButton.ColorStyle : Swift.Hashable {}
+extension SeatGeekSDK.ActionButton.ColorStyle : Swift.RawRepresentable {}
+extension SeatGeekSDK.ActionButton.SizeStyle : Swift.Equatable {}
+extension SeatGeekSDK.ActionButton.SizeStyle : Swift.Hashable {}
+extension SeatGeekSDK.ActionButton.SizeStyle : Swift.RawRepresentable {}
+extension SeatGeekSDK.UpcomingEventError : Swift.Equatable {}
+extension SeatGeekSDK.UpcomingEventError : Swift.Hashable {}
+extension SeatGeekSDK.UpcomingEventError : Swift.RawRepresentable {}
+extension SeatGeekSDK.ContactSupportSource : Swift.Equatable {}
+extension SeatGeekSDK.ContactSupportSource : Swift.Hashable {}
+extension SeatGeekSDK.ContactSupportSource : Swift.RawRepresentable {}
+extension SeatGeekSDK.RefreshPriority : Swift.Equatable {}
+extension SeatGeekSDK.RefreshPriority : Swift.Hashable {}
+extension SeatGeekSDK.RefreshPriority : Swift.RawRepresentable {}
+extension SeatGeekSDK.RequestMethod : Swift.Equatable {}
+extension SeatGeekSDK.RequestMethod : Swift.Hashable {}
+extension SeatGeekSDK.RequestMethod : Swift.RawRepresentable {}
+extension SeatGeekSDK.PlusSignEncodeType : Swift.Equatable {}
+extension SeatGeekSDK.PlusSignEncodeType : Swift.Hashable {}

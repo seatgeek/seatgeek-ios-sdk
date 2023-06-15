@@ -11,29 +11,42 @@ let package = Package(
     products: [
         .library(
             name: "SeatGeek",
-            type: .dynamic,
-            targets: ["SeatGeek"]),
-    ],
-    dependencies: [
-        .package(url: "https://github.com/SnapKit/SnapKit.git", .upToNextMajor(from: "5.0.1")),
-        .package(url: "https://github.com/dbarden/Charts.git", .upToNextMajor(from: "3.6.1")),
-        .package(url: "https://github.com/dbarden/MarkdownKit.git", branch: "master"),
-        .package(url: "https://github.com/dbarden/SwiftOTP.git", branch: "master")
+            targets: ["_SeatGeekSDKTarget"])
     ],
     targets: [
-        .binaryTarget(
-            name: "SeatGeekSDK",
-            url: "https://seatgeek.jfrog.io/artifactory/ios-sdk/v4.0.0/SeatGeekSDK.xcframework.zip",
-            checksum: "fd5206cd9ea1dd6d0cd6bf13dc63985374e0a8731d20f58cf7dffd2710419257"
+        .target(
+            name: "_SeatGeekSDKTarget",
+            dependencies: [.target(name: "_SeatGeekSDKWrapper",
+                                   condition: .when(platforms: [.iOS]))]
         ),
-        .target(name: "SeatGeek",
-                dependencies: [
-                    .product(name: "SnapKit-Dynamic", package: "SnapKit"),
-                    .product(name: "Charts-Dynamic", package: "Charts"),
-                    .product(name: "MarkdownKit-Dynamic", package: "MarkdownKit"),
-                    .product(name: "SwiftOTP-Dynamic",package: "SwiftOTP"),
-                    .target(name: "SeatGeekSDK")
-                ],
-                path: "Sources/SeatGeekSDK/")
+        .target(
+            name: "_SeatGeekSDKWrapper",
+            dependencies: [
+                "SeatGeekSDKTG",
+                "SnapKitTarget",
+                "MarkdownKitTarget",
+                "SwiftOTPTarget"
+            ]
+        ),
+        .binaryTarget(
+            name: "SeatGeekSDKTG",
+            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/v-test-0.0.1/SeatGeekSDK.xcframework.zip",
+            checksum: "d5657b705502859f06a2cd0f7a0cd9d893cbf6befc021cfc7acb6ec278b1ecd5"
+        ),
+        .binaryTarget(
+            name: "SnapKitTarget",
+            url: "https://seatgeek.jfrog.io/artifactory/snapkit-ios/v5.6.0/SnapKit.xcframework.zip",
+            checksum: "dcd611ca6013f7e68fb6ec0da55962c03ae3928dcf81508dae66303f7d429e7d"
+        ),
+        .binaryTarget(
+            name: "SwiftOTPTarget",
+            url: "https://seatgeek.jfrog.io/artifactory/swiftotp-ios/v3.0.0/SwiftOTP.xcframework.zip",
+            checksum: "94bd56c16c25346e4eb490090ed2a63717b4d60eb6bed7b1493acdd0b11081e7"
+        ),
+        .binaryTarget(
+            name: "MarkdownKitTarget",
+            url: "https://seatgeek.jfrog.io/artifactory/markdownkit-ios/v1.7.0/MarkdownKit.xcframework.zip",
+            checksum: "ff216b422c0136381ca070190e4c57adef3b3ca78e0d5b6d467aeeb982f6b108"
+        )
     ]
 )

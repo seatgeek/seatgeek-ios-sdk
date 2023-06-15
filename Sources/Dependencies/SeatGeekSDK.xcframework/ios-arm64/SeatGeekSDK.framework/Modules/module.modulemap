@@ -1,0 +1,11 @@
+framework module SeatGeekSDK {
+  umbrella header "SeatGeekSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module SeatGeekSDK.Swift {
+  header "SeatGeekSDK-Swift.h"
+  requires objc
+}
