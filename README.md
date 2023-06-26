@@ -35,6 +35,8 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 
 >Xcode 14.2+ is required to build the SeatGeekSDK using Swift Package Manager
 
+## Step I
+
 To integrate SeatGeekSDK into your Xcode project using Swift Package Manager, add it to the dependencies value of your `Package.swift`:
 
     dependencies: [
@@ -50,5 +52,10 @@ SeatGeekSDK uses external dependencies. Here you can find a list of them along w
 SeatGeekSDK uses them as binary targets, so you won't see any of the external dependencies in your `Package.swift` description. 
 >Your application can use these dependencies independently by importing them to your file. There is no need to add them separately.
 
+## Step II
+Next, you need to add SeatGeek authorisation credentials. Please reach out to your SeatGeek Enterprise client services representative to acquire it.
+You will find a step-by-step plan on how to configure auth files in our documentation.
 
-## Usage TBD
+## Usage
+To get started with SeatGeekSDK please follow [this link](https://partners.seatgeek.com/mobile-sdk/iOS#getting-started-with-ios) to our official documentation.
+
