@@ -15,7 +15,7 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 - [Installation](https://github.com/seatgeek/seatgeek-ios-sdk#installation)
 
 ## Requirements
-- iOS 14.0+
+- iOS 15.0+
 - XCode 14.2+
 
 ## Features
