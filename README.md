@@ -25,8 +25,8 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 - SSO (Single sign-on)
 
 
-## Communication TBD
-- If you have any issues, please contact `email` for the details.
+## Communication
+- If you have any questions, please contact us via Slack for details.
 
 ## Installation
 
