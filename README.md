@@ -16,7 +16,7 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 
 ## Requirements
 - iOS 15.0+
-- XCode 14.3+
+- XCode 15.0+
 
 ## Features
 - Ability to view tickets, ticket history
@@ -47,7 +47,6 @@ SeatGeekSDK uses external dependencies. Here you can find a list of them along w
 
  - SnapKit '5.6.0'
  - SwiftOTP '3.0.0'
- - MarkDownKit '1.7.0'
 
 SeatGeekSDK uses them as binary targets, so you won't see any of the external dependencies in your `Package.swift` description. 
 >Your application can use these dependencies independently by importing them to your file. There is no need to add them separately.
