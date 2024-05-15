@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SeatGeek",
     platforms: [
-        .iOS(.v13)
+        .iOS(.v15)
     ],
     products: [
         .library(
@@ -24,13 +24,15 @@ let package = Package(
             dependencies: [
                 "SeatGeekSDKTG",
                 "SnapKitTarget",
-                "SwiftOTPTarget"
+                "SwiftOTPTarget",
+                "HTTPTypesFoundationTarget",
+                "HTTPTypesTarget"
             ]
         ),
         .binaryTarget(
             name: "SeatGeekSDKTG",
-            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.4.2/SeatGeekSDK.xcframework.zip",
-            checksum: "e02c535667f229e7fbecbe1bb5789212a9f15a3dd1b5c2a8cc0ad601608904ef"
+            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.5.0/SeatGeekSDK.xcframework.zip",
+            checksum: "ea47bc72f396256e7b7ead2f7d7c9a3f7a7ecd0f0a0947e9ec710dfa26c8aaf6"
         ),
         .binaryTarget(
             name: "SnapKitTarget",
@@ -41,6 +43,11 @@ let package = Package(
             name: "SwiftOTPTarget",
             url: "https://seatgeek.jfrog.io/artifactory/swiftotp-ios/v3.0.0/SwiftOTP.xcframework.zip",
             checksum: "94bd56c16c25346e4eb490090ed2a63717b4d60eb6bed7b1493acdd0b11081e7"
-        )
+        ),
+        .binaryTarget(
+            name: "HTTPTypesFoundationTarget",
+            url: JFrogPath(forResourcePath: "/artifactory/swift-http-types/swift-http-types-foundation.xcframework.zip"),
+            checksum: "f8ad38cdf7611b4868873f60a0cd08b3ce6980301755b98fd345a1a6e650123b"
+        ),
     ]
 )
