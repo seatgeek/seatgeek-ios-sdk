@@ -48,6 +48,6 @@ let package = Package(
             name: "HTTPTypesFoundationTarget",
             url: JFrogPath(forResourcePath: "/artifactory/swift-http-types/swift-http-types-foundation.xcframework.zip"),
             checksum: "f8ad38cdf7611b4868873f60a0cd08b3ce6980301755b98fd345a1a6e650123b"
-        ),
+        )
     ]
 )
