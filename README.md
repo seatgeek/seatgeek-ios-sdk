@@ -47,6 +47,7 @@ SeatGeekSDK uses external dependencies. Here you can find a list of them along w
 
  - SnapKit '5.6.0'
  - SwiftOTP '3.0.0'
+ - HTTPTypes '1.0.0'
 
 SeatGeekSDK uses them as binary targets, so you won't see any of the external dependencies in your `Package.swift` description. 
 >Your application can use these dependencies independently by importing them to your file. There is no need to add them separately.
