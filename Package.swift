@@ -24,7 +24,7 @@ let package = Package(
             dependencies: [
                 "SeatGeekSDKTG",
                 "SnapKitTarget",
-                "SwiftOTPTarget",3
+                "SwiftOTPTarget",
                 "HTTPTypesFoundationTarget",
                 "HTTPTypesTarget"
             ]
