@@ -36,8 +36,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "SnapKitTarget",
-            url: "https://seatgeek.jfrog.io/artifactory/snapkit-ios/v5.6.0/SnapKit.xcframework.zip",
-            checksum: "dcd611ca6013f7e68fb6ec0da55962c03ae3928dcf81508dae66303f7d429e7d"
+            url: "https://seatgeek.jfrog.io/artifactory/snapkit-ios/v5.7.1/SnapKit.xcframework.zip",
+            checksum: "dca0f6492a483dd327f170476044037f77f54f0af31916d3e466bf63b4de6beb"
         ),
         .binaryTarget(
             name: "SwiftOTPTarget",
