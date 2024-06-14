@@ -45,7 +45,7 @@ To integrate SeatGeekSDK into your Xcode project using Swift Package Manager, ad
 
 SeatGeekSDK uses external dependencies. Here you can find a list of them along with versions. 
 
- - SnapKit '5.6.0'
+ - SnapKit '5.7.1'
  - SwiftOTP '3.0.0'
  - HTTPTypes '1.0.0'
 
