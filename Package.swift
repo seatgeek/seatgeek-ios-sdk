@@ -24,15 +24,15 @@ let package = Package(
             dependencies: [
                 "SeatGeekSDKTG",
                 "SnapKitTarget",
-                "SwiftOTPTarget",
+                "SwiftOTPTarget",3
                 "HTTPTypesFoundationTarget",
                 "HTTPTypesTarget"
             ]
         ),
         .binaryTarget(
             name: "SeatGeekSDKTG",
-            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.5.0/SeatGeekSDK.xcframework.zip",
-            checksum: "08ba8877e550d1058c1ccd844217505fcc3b7b0effaea40514345cf30bfc23be"
+            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.5.1/SeatGeekSDK.xcframework.zip",
+            checksum: "027141e630093c67f8c98ef739e8ccdcb6f072362989d462cadeb4728ed0f937"
         ),
         .binaryTarget(
             name: "SnapKitTarget",
