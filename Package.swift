@@ -31,13 +31,13 @@ let package = Package(
         ),
         .binaryTarget(
             name: "SeatGeekSDKTG",
-            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.5.0/SeatGeekSDK.xcframework.zip",
-            checksum: "08ba8877e550d1058c1ccd844217505fcc3b7b0effaea40514345cf30bfc23be"
+            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.5.1/SeatGeekSDK.xcframework.zip",
+            checksum: "027141e630093c67f8c98ef739e8ccdcb6f072362989d462cadeb4728ed0f937"
         ),
         .binaryTarget(
             name: "SnapKitTarget",
-            url: "https://seatgeek.jfrog.io/artifactory/snapkit-ios/v5.6.0/SnapKit.xcframework.zip",
-            checksum: "dcd611ca6013f7e68fb6ec0da55962c03ae3928dcf81508dae66303f7d429e7d"
+            url: "https://seatgeek.jfrog.io/artifactory/snapkit-ios/v5.7.1/SnapKit.xcframework.zip",
+            checksum: "dca0f6492a483dd327f170476044037f77f54f0af31916d3e466bf63b4de6beb"
         ),
         .binaryTarget(
             name: "SwiftOTPTarget",
