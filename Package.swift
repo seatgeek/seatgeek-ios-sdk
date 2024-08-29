@@ -11,7 +11,7 @@ let package = Package(
     products: [
         .library(
             name: "SeatGeek",
-            targets: ["_SeatGeekSDKTarget"]),
+            targets: ["SeatGeek"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-http-types", exact: "1.2.0"),
@@ -20,7 +20,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "_SeatGeekSDKTarget",
+            name: "SeatGeek",
             dependencies: [
                 .target(name: "SeatGeekSDK"),
                 .product(name: "HTTPTypes", package: "swift-http-types"),
