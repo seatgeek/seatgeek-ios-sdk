@@ -16,7 +16,7 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 
 ## Requirements
 - iOS 15.0+
-- XCode 15.0+
+- XCode 16.0+
 
 ## Features
 - Ability to view tickets, ticket history
@@ -33,7 +33,7 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 #### Swift Package Manager
 [Swift Package Manager](https://www.swift.org/package-manager/) is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
 
->Xcode 14.3+ is required to build the SeatGeekSDK using Swift Package Manager
+>Xcode 16.0+ is required to build the SeatGeekSDK using Swift Package Manager
 
 ## Step I
 
