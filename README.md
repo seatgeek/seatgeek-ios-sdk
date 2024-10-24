@@ -1,9 +1,9 @@
 # SeatGeekSDK
 
-
-For the SeatGeek SDK documentation, please refer to our [partner documentation](https://partners.seatgeek.com)
 SeatGeek SDK allows client integrators to bring ticketing experience into their iOS apps.
 
+- For the SeatGeek SDK documentation, please refer to our [developer documentation](https://developer.seatgeek.com).
+- For the SeatGeek SDK demo apps, please refer to [seatgeek-ios-sdk-demo](https://github.com/seatgeek/seatgeek-ios-sdk-demo) repository.
 
 ![ios](https://img.shields.io/cocoapods/p/ios?color=lightgrey)
 ![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen)
@@ -40,7 +40,7 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 To integrate SeatGeekSDK into your Xcode project using Swift Package Manager, add it to the dependencies value of your `Package.swift`:
 
     dependencies: [
-        .package(url: "https://github.com/seatgeek/seatgeek-ios-sdk", branch: "main")
+        .package(url: "https://github.com/seatgeek/seatgeek-ios-sdk", from: "4.7.0")
     ]
 
 SeatGeekSDK uses external dependencies. Here you can find a list of them along with versions. 
@@ -57,4 +57,5 @@ Next, you need to add SeatGeek authorisation credentials. Please reach out to yo
 You will find a step-by-step plan on how to configure auth files in our documentation.
 
 ## Usage
-To get started with SeatGeekSDK please follow [this link](https://partners.seatgeek.com/mobile-sdk/iOS#getting-started-with-ios) to our official documentation.
+- To get started with SeatGeekSDK please follow [this link](https://developer.seatgeek.com/docs/20afca50-1a5e-47f6-b80a-12fc5bc699b4/us-native-mobile-sdk) to our official documentation.
+- Use our [demo repository](https://github.com/seatgeek/seatgeek-ios-sdk-demo) to see some basic examples of how to integrate the SDK into your app.
