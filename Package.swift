@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SeatGeek",
     platforms: [
-        .iOS(.v15)
+        .iOS(.v16)
     ],
     products: [
         .library(
@@ -31,8 +31,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "SeatGeekSDKTG",
-            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.7.0/SeatGeekSDK.xcframework.zip",
-            checksum: "12f28fec5bf971fbcf9621ca0ade64035d2bf0d665e10ff96c6da72bcdfae055"
+            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.8.0/SeatGeekSDK.xcframework.zip",
+            checksum: "1e3e2c2fa4252cafd5b9864f744a00da0898956a38783adc3889edd215741daa"
         ),
         .binaryTarget(
             name: "SnapKitTarget",
