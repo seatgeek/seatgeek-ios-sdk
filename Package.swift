@@ -31,8 +31,8 @@ let package = Package(
         ),
         .binaryTarget(
             name: "SeatGeekSDKTG",
-            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/4.8.1/SeatGeekSDK.xcframework.zip",
-            checksum: "938d408de741958fc8cc849b426336f5e5be0367425b955d2d0422eb556543a5"
+            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/debug/4.8.1/SeatGeekSDK-3.xcframework.zip",
+            checksum: "e88a1d0be95d28a878136e0b4849183fa7d6de4d9575d434f9e97aa37df799fa"
         ),
         .binaryTarget(
             name: "SnapKitTarget",
