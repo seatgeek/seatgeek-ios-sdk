@@ -16,7 +16,7 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 
 ## Requirements
 - iOS 16.0+
-- XCode 16.2+
+- XCode 26.0+
 
 ## Features
 - Ability to view tickets, ticket history
@@ -40,7 +40,7 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 To integrate SeatGeekSDK into your Xcode project using Swift Package Manager, add it to the dependencies value of your `Package.swift`:
 
     dependencies: [
-        .package(url: "https://github.com/seatgeek/seatgeek-ios-sdk", from: "5.1.0")
+        .package(url: "https://github.com/seatgeek/seatgeek-ios-sdk", from: "5.2.0")
     ]
 
 SeatGeekSDK uses external dependencies. Here you can find a list of them along with versions. 
