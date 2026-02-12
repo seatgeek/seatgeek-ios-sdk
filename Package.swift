@@ -13,9 +13,9 @@ let package = Package(
             name: "SeatGeek",
             targets: ["_SeatGeekSDKTarget"])
     ],
-    dependencies: [
-        .package(url: "https://github.com/apple/swift-http-types", from: "1.2.0", moduleAliases: ["HTTPTypes": "SGSDKHTTPTypes"]),
-    ],
+    // dependencies: [
+    //     .package(url: "https://github.com/apple/swift-http-types", from: "1.2.0", moduleAliases: ["HTTPTypes": "SGSDKHTTPTypes"]),
+    // ],
     targets: [
         .target(
             name: "_SeatGeekSDKTarget",
@@ -27,9 +27,9 @@ let package = Package(
             dependencies: [
                 "SeatGeekSDKTG",
                 "SnapKitTarget",
-                "SwiftOTPTarget",
-                .product(name: "HTTPTypes", package: "swift-http-types"),
-                .product(name: "HTTPTypesFoundation", package: "swift-http-types")
+                "SwiftOTPTarget"
+                // .product(name: "HTTPTypes", package: "swift-http-types"),
+                // .product(name: "HTTPTypesFoundation", package: "swift-http-types")
             ]
         ),
         .binaryTarget(
