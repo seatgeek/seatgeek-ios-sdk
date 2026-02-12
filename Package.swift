@@ -14,7 +14,7 @@ let package = Package(
             targets: ["_SeatGeekSDKTarget"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-http-types", from: "1.2.0"),
+        .package(url: "https://github.com/apple/swift-http-types", from: "1.2.0", moduleAliases: ["HTTPTypes": "SGSDKHTTPTypes"]),
     ],
     targets: [
         .target(
