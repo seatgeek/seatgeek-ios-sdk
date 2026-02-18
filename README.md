@@ -15,7 +15,7 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 - [Installation](https://github.com/seatgeek/seatgeek-ios-sdk#installation)
 
 ## Requirements
-- iOS 16.0+
+- iOS 17.0+
 - XCode 26.0+
 
 ## Features
@@ -33,14 +33,12 @@ SeatGeek SDK allows client integrators to bring ticketing experience into their 
 #### Swift Package Manager
 [Swift Package Manager](https://www.swift.org/package-manager/) is a tool for managing the distribution of Swift code. It’s integrated with the Swift build system to automate the process of downloading, compiling, and linking dependencies.
 
->Xcode 16.2+ is required to build the SeatGeekSDK using Swift Package Manager.
-
 ## Step I
 
 To integrate SeatGeekSDK into your Xcode project using Swift Package Manager, add it to the dependencies value of your `Package.swift`:
 
     dependencies: [
-        .package(url: "https://github.com/seatgeek/seatgeek-ios-sdk", from: "5.2.0")
+        .package(url: "https://github.com/seatgeek/seatgeek-ios-sdk", from: "5.3.0")
     ]
 
 SeatGeekSDK uses external dependencies. Here you can find a list of them along with versions. 
