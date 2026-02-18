@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "SeatGeek",
     platforms: [
-        .iOS(.v16)
+        .iOS(.v17)
     ],
     products: [
         .library(
