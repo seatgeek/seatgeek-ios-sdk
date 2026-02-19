@@ -26,7 +26,8 @@ let package = Package(
                 "SnapKitTarget",
                 "SwiftOTPTarget",
                 "HTTPTypesFoundationTarget",
-                "HTTPTypesTarget"
+                "HTTPTypesTarget",
+                "SGTrackerTarget"
             ]
         ),
         .binaryTarget(
@@ -53,6 +54,11 @@ let package = Package(
             name: "HTTPTypesTarget",
             url: "https://seatgeek.jfrog.io/artifactory/swift-http-types/swift-http-types.xcframework.zip",
             checksum: "2c7677588c1e56bc83348a298333663d2430c33abb32fedaf36050848970d3dd"
+        ),
+        .binaryTarget(
+            name: "SGTrackerTarget",
+            url: "https://seatgeek.jfrog.io/artifactory/sdk-ios/test-29-08/SGTracker.xcframework.zip",
+            checksum: "f85d116a8014c54006386263456408c2fd5c5402ab83665b385b6f9aa95a8965"
         )
     ]
 )
